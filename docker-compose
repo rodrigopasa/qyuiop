@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  pazap-disparador:
+    build: .
+    container_name: pazap-disparador
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+      # IMPORTANTE: Mude estas variáveis em produção!
+      - ADMIN_PASSWORD=admin123
+      - SESSION_SECRET=mude-esta-chave-secreta-em-producao
+    volumes:
+      # Persistir dados entre reinicializações
+      - pazap-data:/app/data
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:3000/api/auth/check"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+
+volumes:
+  pazap-data:
+    driver: local
+
