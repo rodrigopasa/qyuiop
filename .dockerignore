@@ -1,0 +1,40 @@
+# Dependências
+node_modules/
+npm-debug.log*
+
+# Dados locais (serão criados no container)
+data/
+
+# Git
+.git/
+.gitignore
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Documentação (não necessária no container)
+*.md
+!README.md
+
+# Arquivos de exemplo
+*.example
+
+# Logs
+*.log
+logs/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Testes
+test/
+tests/
+__tests__/
+*.test.js
+*.spec.js
+coverage/
+
